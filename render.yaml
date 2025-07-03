@@ -1,0 +1,6 @@
+services:  
+  - type: web  
+  name: pilotageter  
+  env: python  
+  buildCommand: ""  
+  startCommand: "python prof6.py" 
