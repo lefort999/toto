@@ -3,4 +3,4 @@ services:
   name: pilotageter  
   env: python  
   buildCommand: ""  
-  startCommand: "python prof6.py" 
+  startCommand: "python prof41.py" 
