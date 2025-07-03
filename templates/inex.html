@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Moteur Généalogique</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            padding: 30px;
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            min-width: 320px;
+            flex: 1;
+            max-width: 500px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        .checkboxes label {
+            font-weight: normal;
+            display: block;
+            margin-top: 5px;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 10px;
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .scroll-zone {
+            max-height: 300px;
+            overflow-y: auto;
+            background-color: #fdfdfd;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: left;
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔎 Moteur Généalogique Unifié</h1>
+
+    <div class="container">
+        <!-- Analyse Généalogique -->
+        <form method="post" action="/analyse">
+            <h2>Analyse par critères</h2>
+            <label>Profession :</label><input type="text" name="profession">
+            <label>Année de naissance :</label><input type="number" name="naissance">
+            <label>Année de mariage :</label><input type="number" name="mariage">
+            <label>Année de décès :</label><input type="number" name="deces">
+            <label>Lieu de naissance :</label><input type="text" name="lieu_naissance">
+            <label>Lieu de mariage :</label><input type="text" name="lieu_mariage">
+            <label>Lieu de décès :</label><input type="text" name="lieu_deces">
+            <label>CP naissance :</label><input type="text" name="cp_naissance">
+            <label>CP mariage :</label><input type="text" name="cp_mariage">
+            <label>CP décès :</label><input type="text" name="cp_deces">
+
+            <div class="checkboxes">
+                <label><input type="checkbox" name="militaire"> Militaire</label>
+                <label><input type="checkbox" name="blesse"> Blessé</label>
+                <label><input type="checkbox" name="officier"> Officier</label>
+                <label><input type="checkbox" name="celibataire"> Célibataire</label>
+                <label><input type="checkbox" name="etatcivil"> Acte d'état civil complet</label>
+            </div>
+
+            <label>Documents à consulter :</label>
+            <div class="checkboxes">
+                <label><input type="checkbox" name="documentation" value="fisc"> Fisc</label>
+                <label><input type="checkbox" name="documentation" value="cadastre"> Cadastre</label>
+                <label><input type="checkbox" name="documentation" value="notaire"> Notaire</label>
+                <label><input type="checkbox" name="documentation" value="militaire"> Militaire</label>
+                <label><input type="checkbox" name="documentation" value="administration"> Administration</label>
+            </div>
+
+            <button type="submit">Analyser</button>
+
+            <!-- Partie à interpréter par un moteur de template -->
+            <!-- Exemple : Flask / Django -->
+            {% if message %}
+            <div class="scroll-zone">{{ message|safe }}</div>
+            {% endif %}
+        </form>
+
+        <!-- Lecture de rubrique -->
+        <form method="post" action="/profession">
+            <h2>Lecture de rubrique</h2>
+            <label for="lecture">Nom de la rubrique :</label>
+            <input type="text" name="lecture" id="lecture" placeholder="ex: militaire, notaire..." required>
+            <button type="submit">Afficher rubrique</button>
+
+            {% if lecture_result %}
+            <div class="scroll-zone">{{ lecture_result }}</div>
+            {% endif %}
+        </form>
+    </div>
+</body>
+</html>
