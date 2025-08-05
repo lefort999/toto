@@ -61,16 +61,23 @@
 
     <!-- Boîte image + intro avec deux images côte à côte -->
     <div style="border: 1px solid #ccc; padding: 20px; margin: 20px; background-color: #fdfdfd;">
-        <div class="image-row">
-            <img src="{{ url_for('static', filename='severin.jpg') }}" alt="Severin">
-            <img src="{{ url_for('static', filename='tonkin.jpg') }}" alt="Médaille Tonkin">
-	    <img src="{{ url_for('static', filename='frantz.jpg') }}" alt="frantz">
-	    <img src="{{ url_for('static', filename='matricule.jpg') }}" alt="matricule">
-        </div>
-        </div>
-        <p>
-            Photo de Séverin Werlin, mon grand-père maternel, accompagné de sa médaille du Tonkin et de son frère Frantz.
-        </p>
+        <div class="image-row" style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <img src="{{ url_for('static', filename='severin.jpg') }}" alt="Severin" style="max-width: 200px;">
+        <img src="{{ url_for('static', filename='tonkin.jpg') }}" alt="Médaille Tonkin" style="max-width: 200px;">
+        <img src="{{ url_for('static', filename='frantz.jpg') }}" alt="Frantz" style="max-width: 200px;">
+        <img src="{{ url_for('static', filename='matricule.jpg') }}" alt="Matricule petit" style="max-width: 200px;">
+    </div>
+
+    <p>
+        Photo de Séverin Werlin, mon grand-père maternel, accompagné de sa médaille du Tonkin et de son frère Frantz.
+    </p>
+
+    <!-- Image matricule agrandie en dessous -->
+    <div style="margin-top: 30px; text-align: center;">
+        <img src="{{ url_for('static', filename='matricule.jpg') }}" alt="Document matricule"
+             style="width: 100%; max-width: 1875px; height: auto; border: 2px solid #888; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+        <p style="font-style: italic; margin-top: 10px;">Document militaire de Séverin Werlin (agrandi)</p>
+    </div>
     </div>
 
     <!-- Bouton pour afficher/masquer le récit -->
