@@ -8,20 +8,23 @@
             font-size: 18px;
             font-family: Arial, sans-serif;
             line-height: 1.6;
+            background-color: #fdfdfd;
+            margin: 20px;
         }
 
         h1 {
             font-size: 28px;
             font-family: "Edwardian Script ITC", cursive;
+            text-align: center;
         }
 
         .recit-box {
-            max-height: 300px;
+            max-height: 400px;
             overflow-y: auto;
             padding: 20px;
             border: 2px solid #aaa;
             border-radius: 10px;
-            background-color: #fdfdfd;
+            background-color: #fff;
             box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
             font-size: 18px;
             font-family: Georgia, serif;
@@ -34,12 +37,16 @@
             padding: 10px 15px;
             font-size: 16px;
             cursor: pointer;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .image-row {
             display: flex;
             gap: 20px;
             align-items: center;
+            justify-content: center;
             margin-bottom: 20px;
             flex-wrap: wrap;
         }
@@ -51,35 +58,41 @@
 
         .image-large {
             width: 100%;
-            max-width: 1875px;
+            max-width: 1200px;
             height: auto;
             border: 2px solid #888;
             box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            margin-top: 30px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .caption {
+            text-align: center;
+            font-style: italic;
+            margin-top: 10px;
         }
     </style>
 </head>
-
 <body>
     <h1>Voici une image avec le texte !</h1>
 
-    <div style="border: 1px solid #ccc; padding: 20px; margin: 20px; background-color: #fdfdfd;">
-        <!-- Galerie d’images -->
+    <!-- Galerie d’images -->
+    <div style="border: 1px solid #ccc; padding: 20px; background-color: #fff;">
         <div class="image-row">
-            <img src="{{ url_for('static', filename='severin.jpg') }}" alt="Severin">
+            <img src="{{ url_for('static', filename='severin.jpg') }}" alt="Séverin">
             <img src="{{ url_for('static', filename='tonkin.jpg') }}" alt="Médaille Tonkin">
             <img src="{{ url_for('static', filename='frantz.jpg') }}" alt="Frantz">
-            <img src="{{ url_for('static', filename='matricule.jpg') }}" alt="Matricule petit">
         </div>
 
-        <p>
-            Photo de Séverin Werlin, mon grand-père maternel, accompagné de sa médaille du Tonkin et de son frère Frantz.
+        <p style="text-align: center;">
+            Séverin Werlin, sa médaille du Tonkin, et son frère Frantz.
         </p>
 
         <!-- Image matricule agrandie -->
-        <div style="margin-top: 30px; text-align: center;">
-            <img src="{{ url_for('static', filename='matricule.jpg') }}" alt="Document matricule" class="image-large">
-            <p style="font-style: italic; margin-top: 10px;">Document militaire de Séverin Werlin (agrandi)</p>
-        </div>
+        <img src="{{ url_for('static', filename='matricule.jpg') }}" alt="Document matricule" class="image-large">
+        <p class="caption">Document militaire de Séverin Werlin</p>
     </div>
 
     <!-- Bouton pour afficher/masquer le récit -->
@@ -88,8 +101,11 @@
     <!-- Boîte récit déroulante -->
     <div id="recit" class="recit-box" style="display: none;">
         <p>
-            Mon grand-père Séverin Werlin est né en Haute-Alsace à Lutterbach en 1872...
-            <!-- (ton texte complet ici) -->
+            Mon grand-père Séverin Werlin est né en Haute-Alsace à Lutterbach en 1872, il naît donc Allemand bien que ses parents restés en Alsace après l'annexion fussent de culture et nationalité française mais ils opteront pour l’Allemagne.
+            On a une photo de Séverin en uniforme de l’infanterie coloniale et Franz son frère en uniforme allemand. Il grandit en Alsace et apprend le métier de mécanicien à Mulhouse.
+            À 18 ans, il décide contrairement à son frère Franz de recouvrer la nationalité française et s'engage pour cela pour 5 ans dans l'armée française, à la légion étrangère.
+            Il participe aux campagnes du Tonkin où une rare photo le montre caporal d'infanterie coloniale, décoré de la médaille coloniale, à Vinh-Long.
+            Libéré de ses obligations militaires et désormais français, il s'installe à Saint-Denis comme beaucoup d'Alsaciens expatriés.
         </p>
     </div>
 
