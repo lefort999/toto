@@ -96,7 +96,7 @@
     </div>
 
     <!-- Bouton pour afficher/masquer le récit -->
-    <button onclick="toggleRecit()">Afficher le récit complet</button>
+    <button id="toggleButton">Afficher le récit complet</button>
 
     <!-- Boîte récit déroulante -->
     <div id="recit" class="recit-box" style="display: none;">
@@ -110,17 +110,16 @@
     </div>
 
     <script>
-        function toggleRecit() {
+        document.getElementById("toggleButton").addEventListener("click", function () {
             const box = document.getElementById("recit");
-            const button = document.querySelector("button");
             if (box.style.display === "none") {
                 box.style.display = "block";
-                button.textContent = "Masquer le récit";
+                this.textContent = "Masquer le récit";
             } else {
                 box.style.display = "none";
-                button.textContent = "Afficher le récit complet";
+                this.textContent = "Afficher le récit complet";
             }
-        }
+        });
     </script>
 </body>
 </html>
