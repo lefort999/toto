@@ -19,8 +19,6 @@
         }
 
         .recit-box {
-            max-height: 400px;
-            overflow-y: auto;
             padding: 20px;
             border: 2px solid #aaa;
             border-radius: 10px;
@@ -29,17 +27,7 @@
             font-size: 18px;
             font-family: Georgia, serif;
             line-height: 1.6;
-            margin-top: 20px;
-        }
-
-        button {
-            margin-top: 20px;
-            padding: 10px 15px;
-            font-size: 16px;
-            cursor: pointer;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
+            margin-top: 30px;
         }
 
         .image-row {
@@ -95,11 +83,8 @@
         <p class="caption">Document militaire de Séverin Werlin</p>
     </div>
 
-    <!-- Bouton pour afficher/masquer le récit -->
-    <button id="toggleButton">Afficher le récit complet</button>
-
-    <!-- Boîte récit déroulante -->
-    <div id="recit" class="recit-box" style="display: none;">
+    <!-- Récit affiché directement -->
+    <div class="recit-box">
         <p>
             Mon grand-père Séverin Werlin est né en Haute-Alsace à Lutterbach en 1872, il naît donc Allemand bien que ses parents restés en Alsace après l'annexion fussent de culture et nationalité française mais ils opteront pour l’Allemagne.
             On a une photo de Séverin en uniforme de l’infanterie coloniale et Franz son frère en uniforme allemand. Il grandit en Alsace et apprend le métier de mécanicien à Mulhouse.
@@ -108,18 +93,5 @@
             Libéré de ses obligations militaires et désormais français, il s'installe à Saint-Denis comme beaucoup d'Alsaciens expatriés.
         </p>
     </div>
-
-    <script>
-        document.getElementById("toggleButton").addEventListener("click", function () {
-            const box = document.getElementById("recit");
-            if (box.style.display === "none") {
-                box.style.display = "block";
-                this.textContent = "Masquer le récit";
-            } else {
-                box.style.display = "none";
-                this.textContent = "Afficher le récit complet";
-            }
-        });
-    </script>
 </body>
 </html>
