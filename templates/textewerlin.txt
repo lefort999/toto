@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bienvenue</title>
+  <style>
+    /* ========= Variables & reset léger ========= */
+    :root {
+      --bg: #f7f7f8;
+      --card: #ffffff;
+      --text: #1f2328;
+      --muted: #6b7280;
+      --border: #d1d5db;
+      --shadow: 0 2px 10px rgba(0,0,0,.06);
+      --radius: 12px;
+      --gap: 20px;
+      --maxw: 1000px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font: 17px/1.7 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+    }
+    .container {
+      max-width: var(--maxw);
+      margin: 24px auto 64px;
+      padding: 0 16px;
+    }
+
+    /* ========= Titre ========= */
+    header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-size: 28px;
+      font-family: "Edwardian Script ITC", "Brush Script MT", cursive;
+      margin: 0 0 8px;
+    }
+    .subtitle {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* ========= Carte/gallerie ========= */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 160px));
+      justify-content: center;
+      gap: var(--gap);
+    }
+    @media (max-width: 560px) {
+      .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    figure {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .thumb {
+      width: 150px;
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #888;
+      border-radius: 8px;
+      display: block;
+    }
+    figcaption {
+      font-size: 13px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* ========= Image principale ========= */
+    .hero {
+      margin-top: 28px;
+      text-align: center;
+    }
+    .hero-img {
+      width: 100%;
+      max-width: 1200px;
+      height: auto;
+      border: 2px solid #888;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,.15);
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* ========= Récit ========= */
+    article.recit {
+      margin-top: 28px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+    .prose {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 18px;
+      line-height: 1.75;
+      text-wrap: pretty;
+      hyphens: auto;
+    }
+    .prose p { margin: 0 0 1em; }
+
+    /* ========= Impression ========= */
+    @media print {
+      body { background: #fff; }
+      .container { margin: 0; max-width: none; }
+      .card, article.recit { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container" role="main">
+    <header>
+      <h1>Voici une image avec le texte&nbsp;!</h1>
+      <p class="subtitle">Séverin Werlin — souvenirs de famille et archives</p>
+    </header>
+
+    <!-- Galerie d’images -->
+    <section class="card" aria-labelledby="galerie-titre">
+      <h2 id="galerie-titre" class="visually-hidden" style="position:absolute;left:-9999px;">Galerie</h2>
+
+      <div class="gallery" role="list">
+        <figure role="listitem">
+          <img class="thumb" loading="lazy"
+               src="{{ url_for('static', filename='severin.jpg') }}"
+               alt="Portrait de Séverin Werlin" />
+          <figcaption>Séverin Werlin</figcaption>
+        </figure>
+
+        <figure role="listitem">
+          <img class="thumb" loading="lazy"
+               src="{{ url_for('static', filename='tonkin.jpg') }}"
+               alt="Médaille coloniale &laquo;&nbsp;Tonkin&nbsp;&raquo;" />
+          <figcaption>Médaille «&nbsp;Tonkin&nbsp;»</figcaption>
+        </figure>
+
+        <figure role="listitem">
+          <img class="thumb" loading="lazy"
+               src="{{ url_for('static', filename='frantz.jpg') }}"
+               alt="Frantz Werlin en uniforme allemand" />
+          <figcaption>Frantz en uniforme allemand</figcaption>
+        </figure>
+      </div>
+
+      <p style="text-align:center; margin-top: 12px;">
+        Séverin Werlin, sa médaille du Tonkin, et son frère Frantz en uniforme allemand.
+      </p>
+
+      <!-- Image matricule -->
+      <figure class="hero">
+        <img class="hero-img" loading="lazy"
+             src="{{ url_for('static', filename='matricule.jpg') }}"
+             alt="Document militaire (fiche matricule) de Séverin Werlin" />
+        <figcaption style="font-style: italic; margin-top: 10px;">
+          Document militaire de Séverin Werlin
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- Récit -->
+    <article class="recit" aria-labelledby="recit-titre">
+      <h2 id="recit-titre" style="margin-top:0">Récit</h2>
+      <div class="prose">
+        <!-- Ton texte d’origine, inchangé. Tu peux le maintenir ici : -->
+        <p>
+          Mon grand-père Séverin Werlin est né en Haute-Alsace à Lutterbach en 1872, il naît donc Allemand bien que ses parents restés en Alsace après l'annexion fussent de culture et nationalité française mais ils opteront pour l’Allemagne.
+          On a une photo de Séverin en uniforme de l’infanterie coloniale et Franz son frère en uniforme allemand. Il grandit en Alsace et apprend le métier de mécanicien à Mulhouse.
+          À 18 ans, il décide contrairement à son frère Franz de recouvrer la nationalité française et s'engage pour cela pour 5 ans dans l'armée française, à la légion étrangère.
+          Il participe aux campagnes du Tonkin où une rare photo le montre caporal d'infanterie coloniale, décoré de la médaille coloniale, à Vinh-Long.
+          Libéré de ses obligations militaires et désormais français, il s'installe à Saint-Denis comme beaucoup d'Alsaciens expatriés.
+          , 15 rue de la Charronnerie. Au 16 de la même rue habite la famille Luthringer aussi Alsacienne réfugié de Bitchwiller les Thann en 1870
+          après avoir séjourné quelques années à Lure. Romain Luthringer, sa fille Marie, sa seconde épouse et les 3 enfants de son second mariage
+        </p>
+
+        
+               
+        
+      </div>
+    </article>
+  </main>
+</body>
+</html>
